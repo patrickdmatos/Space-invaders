@@ -1,0 +1,60 @@
+body {
+    background-image: url('https://helioh2.github.io/trabalhos-oficina/spaceinvaders-kelvin-jeferson/fundo5.png');
+    overflow: hidden;
+    display: block;
+}
+
+#nav {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    grid-row: 15;
+    grid-column: 6;
+}
+
+#points {
+    background-color: transparent;
+    color: aliceblue;
+    margin: 0;
+}
+
+.counter {
+    background-color: black;
+    color: aliceblue;
+    border: 0.5px solid aliceblue;
+    border-radius: 10px;
+    width: 4rem;
+    text-align: center;
+    font-size: large;
+    grid-column: 15;
+    grid-row: 1;
+}
+
+#shot {
+    background: linear-gradient(0deg, rgb(255, 204, 0), rgb(255, 115, 0), red);
+    width: 0.3rem;
+    height: 2rem;
+    border-radius: 25% 25% 0 0;
+    margin-left: 55px;
+    grid-row: 15;
+}
+
+.parent {
+    margin: auto;
+    height: 95vh;
+    width: 95vw;
+    display: grid;
+    grid-template-columns: repeat(10, 10fr);
+    grid-template-rows: repeat(10, 10fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border: 1px red solid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.invasor {
+    background-image: url('../CSS/IMAGES/enemie1-removebg-preview.png');
+}
