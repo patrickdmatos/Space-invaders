@@ -1,9 +1,9 @@
 const nav = document.getElementById('nav');
 const points = document.getElementsByClassName('counter');
-const bullet = document.getElementById('shot');
-let row = 15
+const grid = document.querySelector('.parent');
+
+let gridRow = 10
 let gridColumn = 6
-bullet.style.gridColumn = 6
 
 document.addEventListener('keydown', function (event) {
     const key = event.code;
@@ -12,44 +12,70 @@ document.addEventListener('keydown', function (event) {
     function changeDirectionRight() {
         gridColumn = gridColumn + 1;
         nav.style.gridColumn = gridColumn;
-        bullet.style.gridColumn = gridColumn;
     }
     function changeDirectionLeft() {
         gridColumn = gridColumn - 1;
         nav.style.gridColumn = gridColumn;
-        bullet.style.gridColumn = gridColumn;
     }
     function respawn() {
-        const enemie = new enemie1();
+        const blockEnemies = document.createElement('div')
+        const enemies = document.createElement('img');
+        enemies.classList.add('enemies');
+        enemies.classList.add('blockEnemies');
+        enemies.id = 'enemies';
+
+        columnsRespawn = 
+
+        blockEnemies.appendChild(enemies);
+        
+        grid.appendChild(blockEnemies);
+
     }
-    function shotColumn() {
-        bullet.style.gridRow 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+    async function movieShot() {
+        const bullet = document.createElement('div');
+        bullet.classList.add('shot');
+        bullet.id = 'shot';
+
+        grid.appendChild(bullet);
+
+        bullet.style.gridColumn = gridColumn;
+        for (let row = 1; row < 10; row++) {
+            bullet.style.gridRow = gridRow - row;
+
+            await sleep(600)
+            
+            if (bullet.style.gridRow == '1 / auto') {
+                bullet.parentElement.removeChild(bullet)
+            }
+        }
     }
     switch (key) {
         case "ArrowLeft":
             changeDirectionLeft();
-            shotColumn();
             break;
         case "KeyA":
             changeDirectionLeft()
-            shotColumn();
             break;
         case "ArrowRight":
             changeDirectionRight()
             break;
         case "KeyD":
             changeDirectionRight()
-            shotColumn();
             break;
         case "Space":
-            shot()
+            movieShot()
             break;
         case "ArrowUp":
-            shot()
+            movieShot()
             break;
         case "KeyW":
-            shot()
+            movieShot()
             break;
     }
+
+    setTimeout(respawn(), 10000)
 });
 
