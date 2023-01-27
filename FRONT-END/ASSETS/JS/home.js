@@ -17,20 +17,6 @@ document.addEventListener('keydown', function (event) {
         gridColumn = gridColumn - 1;
         nav.style.gridColumn = gridColumn;
     }
-    function respawn() {
-        const blockEnemies = document.createElement('div')
-        const enemies = document.createElement('img');
-        enemies.classList.add('enemies');
-        enemies.classList.add('blockEnemies');
-        enemies.id = 'enemies';
-
-        columnsRespawn = 
-
-        blockEnemies.appendChild(enemies);
-        
-        grid.appendChild(blockEnemies);
-
-    }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms))
     }
@@ -45,7 +31,7 @@ document.addEventListener('keydown', function (event) {
         for (let row = 1; row < 10; row++) {
             bullet.style.gridRow = gridRow - row;
 
-            await sleep(600)
+            await sleep(400)
             
             if (bullet.style.gridRow == '1 / auto') {
                 bullet.parentElement.removeChild(bullet)
@@ -76,6 +62,16 @@ document.addEventListener('keydown', function (event) {
             break;
     }
 
-    setTimeout(respawn(), 10000)
 });
 
+(setTimeout(function respawn(){
+    const blockEnemies = document.createElement('div')
+    const enemies = document.createElement('img');
+    enemies.classList.add('enemies');
+    blockEnemies.classList.add('blockEnemies');
+    enemies.id = 'enemies';
+
+    blockEnemies.appendChild(enemies);
+    
+    grid.appendChild(blockEnemies);
+}, 10000))();
